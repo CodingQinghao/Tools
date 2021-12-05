@@ -31,8 +31,9 @@ os.system('chmod +x ./frp_0.38.0_linux_386/frpc')
 
 #start install jupyter
 os.system('jupyter notebook --generate-config -y')
+jupyter_password_sha1 = passwd(str(password))
 os.system('echo \'c.NotebookApp.notebook_dir = "/dev/shm/"\' >> /root/.jupyter/jupyter_notebook_config.py')
-passwd(password)
+os.system('echo \'c.NotebookApp.password = "'+str(jupyter_password_sha1)+'" \' >> /root/.jupyter/jupyter_notebook_config.py')
 os.system('nohup jupyter notebook &')
 
 #config frpc
@@ -57,6 +58,7 @@ f.write('local_port = 8888\n')
 f.write('remote_port = '+str(jupyter_port)+'\n')
 f.write('\n')
 
+f.close()
 os.system('nohup frp_0.38.0_linux_386/frpc -c ./frp_0.38.0_linux_386/ailab-frpc.ini &')
 
 print("\n\n\n\n\n\n")
