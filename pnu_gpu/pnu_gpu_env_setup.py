@@ -11,7 +11,12 @@ def getRandomSet(bits):
 
     return value_set
 
-password = getRandomSet(6)
+
+password = input("Please input a password OR automatic generation:")
+
+if password == "":
+    password = getRandomSet(6)
+
 random_title = random.randint(100000, 199999)
 ssh_port = random.randint(10000, 19999)
 jupyter_port = random.randint(20000, 29999)
@@ -63,7 +68,8 @@ os.system('nohup frp_0.38.0_linux_386/frpc -c ./frp_0.38.0_linux_386/ailab-frpc.
 
 print("\n\n\n\n\n\n")
 print("========Configuration succeeded========")
-print("ssh:ailab.work:"+str(ssh_port))
+print("ssh:ailab.work")
+print("ssh:port:"+str(ssh_port))
 print("ssh password:"+str(password))
 
 print("jupyter:http://ailab.work:"+str(jupyter_port))
