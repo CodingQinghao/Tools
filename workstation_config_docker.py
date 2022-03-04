@@ -20,7 +20,7 @@ if password == "":
 ssh_port = input("Please input a SSH port :")
 if ssh_port == "":
     ssh_port = 22
-jupyter_port = input("Please input a SSH port:")
+jupyter_port = input("Please input a jupyter port:")
 if jupyter_port == "":
     jupyter_port = 8000
 
