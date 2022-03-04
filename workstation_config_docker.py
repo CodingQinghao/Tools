@@ -27,7 +27,7 @@ if jupyter_port == "":
 #start open ssh-server
 os.system('apt update')
 os.system('apt install openssh-server -y')
-os.system('echo "root:'+str(password)+'" | sudo chpasswd')
+os.system('echo "root:'+str(password)+'" | chpasswd')
 os.system('echo "Port '+str(ssh_port)+'" >> /etc/ssh/sshd_config')
 os.system('echo "PermitRootLogin yes" >> /etc/ssh/sshd_config')
 os.system('service ssh start')
