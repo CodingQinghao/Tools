@@ -28,7 +28,7 @@ if jupyter_port == "":
 os.system('apt update')
 os.system('apt install openssh-server -y')
 os.system('echo "root:'+str(password)+'" | sudo chpasswd')
-os.system('echo "Port 22" >> /etc/ssh/sshd_config')
+os.system('echo "Port '+str(ssh_port)+'" >> /etc/ssh/sshd_config')
 os.system('echo "PermitRootLogin yes" >> /etc/ssh/sshd_config')
 os.system('service ssh start')
 
@@ -37,6 +37,7 @@ os.system('service ssh start')
 os.system('jupyter notebook --generate-config -y')
 jupyter_password_sha1 = passwd(str(password))
 os.system('echo \'c.NotebookApp.password = "'+str(jupyter_password_sha1)+'" \' >> /root/.jupyter/jupyter_notebook_config.py')
+os.system('echo "c.NotebookApp.port = '+str(jupyter_port)+'" >> /root/.jupyter/jupyter_notebook_config.py')
 os.system('nohup jupyter notebook &')
 
 
