@@ -38,7 +38,7 @@ os.system('jupyter notebook --generate-config -y')
 jupyter_password_sha1 = passwd(str(password))
 os.system('echo \'c.NotebookApp.password = "'+str(jupyter_password_sha1)+'" \' >> /root/.jupyter/jupyter_notebook_config.py')
 os.system('echo "c.NotebookApp.port = '+str(jupyter_port)+'" >> /root/.jupyter/jupyter_notebook_config.py')
-os.system('echo "c.NotebookApp.ip = 0.0.0.0" >> /root/.jupyter/jupyter_notebook_config.py')
+os.system('echo "c.NotebookApp.ip = \'0.0.0.0\'" >> /root/.jupyter/jupyter_notebook_config.py')
 os.system('nohup jupyter notebook --allow-root &')
 
 
